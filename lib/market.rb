@@ -51,8 +51,16 @@ class Market
   end
 
   def sell(item, amount)
+    return self.can_sell?(item, amount)
+    if self.can_sell?(item, amount)
+      @vendors.each do |vendor|
+      end
+    end
+  end
+
+  def can_sell?(item, amount)
     if self.sorted_item_list.include?(item) && self.total_inventory[item] > amount
-      return true 
+      return true
     else
       return false
     end
