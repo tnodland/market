@@ -19,8 +19,12 @@ class Market
   end
 
   def vendors_that_sell(item)
-    @vendors.map do |vendor|
-      vendor if vendor.inventory.keys.include?(item)
+    vendors_that_sell = []
+    @vendors.each do |vendor|
+      if vendor.inventory.keys.include?(item)
+        vendors_that_sell << vendor
+      end
     end
+    return vendors_that_sell
   end
 end
