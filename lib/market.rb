@@ -49,4 +49,12 @@ class Market
       end
     return total_inventory
   end
+
+  def sell(item, amount)
+    if self.sorted_item_list.include?(item) && self.total_inventory[item] > amount
+      return true 
+    else
+      return false
+    end
+  end
 end
