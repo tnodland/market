@@ -55,14 +55,12 @@ class Market
     true_or_false = self.can_sell?(item, amount)
     running_total = amount
     if self.can_sell?(item, amount)
-      until running_total == 0
         @vendors.each do |vendor|
           until vendor.inventory[item] == 0 || running_total == 0
             vendor.inventory[item] -= 1
             running_total -= 1
           end
         end
-      end
     end
     return true_or_false
   end
