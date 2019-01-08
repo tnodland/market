@@ -27,4 +27,26 @@ class Market
     end
     return vendors_that_sell
   end
+
+  def sorted_item_list
+    sorted_item_list = []
+    @vendors.each do |vendor|
+      vendor.inventory.keys.each do |item|
+        if !sorted_item_list.include?(item)
+          sorted_item_list << item
+        end
+      end
+    end
+    sorted_item_list.sort! {|item, item_2| item <=> item_2}
+  end
+
+  def total_inventory
+    total_inventory = Hash.new(0)
+      @vendors.each do |vendor|
+        vendor.inventory.each do |stock, amount|
+          total_inventory[stock] += amount
+        end
+      end
+    return total_inventory
+  end
 end
